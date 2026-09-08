@@ -71,7 +71,7 @@ export default function Home() {
   </header>
 
   <section className="hero" aria-labelledby="hero-title">
-   <div className="hero-art"><img src="/future-city.png" width="1672" height="941" alt="A lone person faces two diverging bridges toward a vast cyan city beneath an amber sun." fetchPriority="high"/><div className="hero-art-shade"/></div>
+   <div className="hero-art"><img src="/future-city.webp" width="1672" height="941" alt="A lone person faces two diverging bridges toward a vast cyan city beneath an amber sun." fetchPriority="high"/><div className="hero-art-shade"/></div>
    <div className="hero-copy">
     <p className="eyebrow">+ MANY POSSIBLE WORLDS. ONE SHARED FUTURE.</p>
     <h1 id="hero-title">The future<br/>isn’t written.<br/><span>Where do<br/>you stand?</span></h1>
