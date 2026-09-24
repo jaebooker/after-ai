@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { scenarios, questions, dimensions, rankScenarios, validateAnswers, sourceUrl, type Answers, type Scenario } from './futures';
+import { PublicVote } from './public-vote';
 
 const emptyAnswers = (): (string | undefined)[] => Array(5).fill(undefined);
 const toValues = (answers: (string | undefined)[]): Answers => answers.map(v => v === undefined || v === 'unsure' ? null : Number(v)) as Answers;
@@ -66,7 +67,7 @@ export default function Home() {
   <a className="skip" href="#values">Skip to the values explorer</a>
   <header className="site-header">
    <a href="#" className="brand" aria-label="After AI home"><Compass aria-hidden="true"/><span>After<span className="brand-ai">AI</span></span></a>
-   <nav aria-label="Main navigation"><a href="#futures">The futures</a><a href="#values">Your values</a><a href="#about">The thinking behind it <ArrowUpRight size={14}/></a></nav>
+   <nav aria-label="Main navigation"><a href="#futures">The futures</a><a href="#values">Your values</a><a href="#public-vote">Public vote</a><a href="#about">The thinking behind it <ArrowUpRight size={14}/></a></nav>
    <span className="header-note">AN ATLAS OF POSSIBLE FUTURES</span>
   </header>
 
@@ -127,8 +128,9 @@ export default function Home() {
    <p className="atlas-note">The scenario names and concise summaries follow <a href={sourceUrl} {...external}>FLI’s guide to Tegmark <ArrowUpRight size={13}/></a>. Warning labels, questions, positions, and matching profiles are editorial choices for this exploration.</p>
   </section>
 
+  <PublicVote/>
   <section className="thinking-section" id="about" aria-labelledby="thinking-title">
-   <div className="thinking-intro"><p className="eyebrow">03 / KEEP THE QUESTION OPEN</p><h2 id="thinking-title">A compass,<br/><span>not a crystal ball.</span></h2><p>A future can be prosperous without being fair, safe without being free, or intelligent without being humane. The useful question is what we would want to protect—and who gets a say.</p><button className="underlined" onClick={()=>setMethod(true)}>Read the method and its limits <ArrowUpRight size={17}/></button></div>
+   <div className="thinking-intro"><p className="eyebrow">04 / KEEP THE QUESTION OPEN</p><h2 id="thinking-title">A compass,<br/><span>not a crystal ball.</span></h2><p>A future can be prosperous without being fair, safe without being free, or intelligent without being humane. The useful question is what we would want to protect—and who gets a say.</p><button className="underlined" onClick={()=>setMethod(true)}>Read the method and its limits <ArrowUpRight size={17}/></button></div>
    <div className="research-notes"><article><span className="source-number">[01]</span><div><h3>Abundance is a governance question.</h3><p>The OECD links AI benefits with inclusion, human agency, transparency, and accountability. More output alone does not answer who benefits.</p><a href="https://www.oecd.org/en/topics/ai-principles.html" {...external}>OECD AI Principles <ArrowUpRight size={14}/></a></div></article><article><span className="source-number">[02]</span><div><h3>Different people can want different futures.</h3><p>UNESCO’s ethics recommendation grounds AI governance in dignity, diversity, participation, and human responsibility. A five-question quiz cannot speak for that diversity.</p><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" {...external}>UNESCO Recommendation on AI Ethics <ArrowUpRight size={14}/></a></div></article><article><span className="source-number">[03]</span><div><h3>Digital minds raise a separate question.</h3><p>Long and colleagues argue for investigating possible AI welfare under uncertainty. This does not establish that AI is conscious, or imply that humanity should be replaced.</p><a href="https://arxiv.org/abs/2411.00986" {...external}>Taking AI Welfare Seriously, 2024 <ArrowUpRight size={14}/></a></div></article></div>
   </section>
   <footer><a className="brand" href="#"><Compass aria-hidden="true"/><span>After<span className="brand-ai">AI</span></span></a><div><p>An independent exploration inspired by <a href={sourceUrl} {...external}>Max Tegmark / Future of Life Institute</a>, <a href="https://thorehusfeldt.com/wp-content/uploads/2018/05/tegmark-001.png" {...external}>Thore Husfeldt’s chart</a>, and <a href="https://www.tomorrows-ai.org/" {...external}>Tomorrow’s AI</a>.</p><p>Not affiliated with or endorsed by these organizations. Original AI-generated illustration.</p></div><a className="back-to-top" href="#">BACK TO TOP <ArrowUpRight size={16}/></a></footer>

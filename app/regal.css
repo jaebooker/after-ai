@@ -167,3 +167,43 @@ a:focus-visible,button:focus-visible {outline-color:#b38b41;}
 @media(max-width:1200px) {.site-header{height:94px}.header-note{display:none}.hero{min-height:645px}.hero-copy{padding-top:66px;width:55%}.hero h1{font-size:76px}.hero-art{width:40%;top:42px;bottom:80px}.art-caption{left:60%}.values-section{gap:5%;grid-template-columns:.65fr 1.35fr}.quiz-surface{padding:30px}.row-name{font-size:24px}}
 @media(max-width:950px) {.hero{min-height:620px;margin:0 5%}.hero-copy{width:56%;padding:55px 0 60px}.hero h1{font-size:65px}.hero h1>span{font-size:.57em}.hero-art{left:auto;right:0;top:42px;bottom:75px;width:40%;opacity:1}.hero-art-shade{display:none}.hero .eyebrow{font-size:12px;letter-spacing:.06em}.hero-actions{gap:18px;flex-wrap:wrap}.hero-meta{max-width:340px}.bridge{margin:0 5%}.bridge>span:last-child{font-size:17px}.values-section{grid-template-columns:1fr;gap:32px;padding:60px 6%}.values-heading{display:grid;grid-template-columns:1fr 1fr;gap:0 35px}.values-heading h2{font-size:54px;margin:22px 0}.values-heading>p:not(.eyebrow){margin-top:24px}.values-heading .privacy-note{color:#b6b4aa}.quiz-surface{padding:33px}.section-heading h2{font-size:51px}.thinking-intro h2{font-size:55px}.hero-intro br{display:none}}
 @media(max-width:650px) {.site-header{height:82px;padding:0 6%;gap:18px}.brand{font-size:27px;gap:8px}.brand svg{height:34px;width:34px;padding:5px}.site-header nav{gap:19px;font-size:13px}.hero{margin:0 6%;padding-bottom:0;display:flex;flex-direction:column;min-height:0}.hero-copy{width:100%;padding:40px 0 26px}.hero .eyebrow{max-width:350px;font-size:12px;line-height:1.8;letter-spacing:.065em}.hero h1{font-size:clamp(54px,12.5vw,75px);margin:22px 0 24px;line-height:1.07}.hero h1>span{font-size:.58em;line-height:1.3;margin-top:12px}.hero-intro{font-size:16px;line-height:1.8}.hero-actions{gap:23px;margin-top:25px}.hero-meta{font-size:12px;max-width:100%;letter-spacing:.035em}.hero-art{position:relative;inset:auto;order:2;width:100%;height:390px;max-width:430px;align-self:center;margin:12px 0 0;padding:7px;border-radius:210px 210px 2px 2px}.hero-art img{object-position:68% 58%}.art-caption{position:static;order:3;display:flex;justify-content:center;margin:20px 0 29px;font-size:12px;letter-spacing:.12em}.bridge{margin:0 6%;padding:20px 0 25px}.bridge>span:last-child{font-size:17px;line-height:1.5}.values-section{padding:45px 6%;gap:28px}.values-heading{display:block}.values-heading h2{font-size:48px;line-height:1.1;margin:21px 0 24px}.values-heading>p:not(.eyebrow){margin-top:12px}.quiz-surface{padding:26px 19px;margin:0 -4px}.quiz-surface h3{font-size:33px;line-height:1.14}.question-context{font-size:16px}.answer-option{padding:15px 12px}.answer-option strong{font-size:14px}.answer-option small{font-size:13px;line-height:1.6}.answer-letter{display:none}.result-title{font-size:29px}.result-body p{font-size:15px}.atlas-section{padding:48px 6% 44px}.section-heading h2{font-size:46px}.section-aside{font-size:16px}.section-aside p+p{font-size:14px}.view-tabs [data-slot=tabs-trigger]{font-size:13px}.legend{font-size:12px}.map-canvas{min-width:850px}.row-name{font-size:27px}.row-summary{font-size:16px}.thinking-section{padding:46px 6%}.thinking-intro h2{font-size:46px}.thinking-intro>p:not(.eyebrow){font-size:16px}.research-notes h3{font-size:27px}.research-notes p{font-size:16px}.scenario-dialog,.method-dialog{padding:28px 22px!important}.scenario-dialog .dialog-heading,.method-dialog .dialog-heading{font-size:40px}.scenario-summary{font-size:22px}.reflection-block{padding:21px}.reflection-block h3{font-size:27px}.reflection-block>p:not(.eyebrow){font-size:16px}.method-dialog li{font-size:16px}footer{padding:34px 6%}}
+
+/* A public ballot in the atlas's ivory and gold palette. */
+.public-vote { padding: 100px clamp(24px, 5vw, 100px); background: #f5f0e6; color: #12223b; border-top: 1px solid #c6a36566; scroll-margin-top: 30px; }
+.public-vote .section-heading h2 { font-family: Baskerville, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif; }
+.public-vote .section-heading h2 span { color: #806329; }
+.vote-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+.vote-ballot { padding: 32px; border: 1px solid #c6a36580; background: #fffcf5; }
+.vote-ballot h3, .vote-results h3 { font-family: Baskerville, 'Iowan Old Style', Georgia, serif; font-size: 2.25rem; font-weight: 400; margin: 0 0 12px; }
+.vote-ballot > p { font-size: 1rem; line-height: 1.6; }
+.vote-options { margin: 26px 0; grid-template-columns: 1fr 1fr; gap: 10px; }
+.vote-option { display: flex; align-items: center; gap: 12px; padding: 14px 12px; border: 1px solid #12223b26; cursor: pointer; min-height: 62px; font-size: 0.9375rem; }
+.vote-option:hover, .vote-option.chosen { border-color: #98762f; background: #eee4ce; }
+.vote-option > span { flex: 1; }
+.vote-option small { display: block; font-size: 0.8125rem; margin-top: 3px; color: #5b4721; }
+.vote-option [data-slot=radio-group-item] { color: #12223b; border-color: #776442; background: transparent; }
+.vote-option [data-slot=radio-group-item][data-checked] { background: #12223b; border-color: #12223b; }
+.vote-option [data-slot=radio-group-indicator] > span { background: #e4c482; }
+.vote-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.vote-actions button:disabled, .vote-refresh:disabled { opacity: .5; cursor: not-allowed; }
+.vote-ballot .vote-status { color: #315742; min-height: 24px; margin: 12px 0; }
+.vote-ballot .vote-privacy, .vote-method { font-size: .875rem; line-height: 1.65; color: #5e625f; }
+.vote-error { color: #8a3131; }
+.vote-error button { margin-left: 8px; }
+.vote-results { padding: 30px 34px; background: #12223b; color: #f5f0e6; border: 1px solid #b39254; }
+.vote-results-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.vote-results .eyebrow { color: #dec38b; }
+.vote-refresh { border: 1px solid #c6a36580; padding: 10px; display: grid; place-items: center; color: #e4c482; background: transparent; cursor: pointer; }
+.vote-bars { list-style: none; margin: 28px 0; padding: 0; display: grid; gap: 17px; }
+.vote-bar-label { display: flex; justify-content: space-between; gap: 16px; font-size: .9375rem; margin-bottom: 8px; }
+.vote-bar-label > span:first-child { display: flex; align-items: center; gap: 6px; }
+.vote-bar-label > span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vote-bar-label small { font-size: .875rem; color: #c9c8c1; }
+.vote-bar-track { height: 5px; background: #ffffff16; }
+.vote-bar-track > div { height: 100%; background: #c6a365; transition: width .3s ease; }
+.your-vote .vote-bar-label { color: #ebce92; }
+.vote-results .vote-method { color: #c7cbcF; padding-top: 20px; border-top: 1px solid #c6a36550; }
+.vote-empty { color: #e3d4b8; font-size: 1rem; }
+@media (max-width: 1100px) { .vote-layout { gap: 24px; } .vote-options { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .public-vote { padding: 64px 22px; } .vote-layout { grid-template-columns: 1fr; margin-top: 30px; } .vote-ballot, .vote-results { padding: 24px 20px; } }
+@media (prefers-reduced-motion: reduce) { .vote-bar-track > div { transition: none; } }
