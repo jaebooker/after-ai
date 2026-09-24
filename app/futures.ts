@@ -37,3 +37,4 @@ export function rankScenarios(answers: Answers) {
   return [{scenario:s,distance,compared,agreements:compared.filter(v=>v.distance===0),differences:compared.filter(v=>v.distance>0)}];
  }).sort((a,b)=>a.distance-b.distance||b.compared.length-a.compared.length||a.scenario.name.localeCompare(b.scenario.name));
 }
+export type Match = ReturnType<typeof rankScenarios>[number];
