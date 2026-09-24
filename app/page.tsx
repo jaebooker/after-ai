@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { ArrowUpRight, ArrowRight, ArrowLeft, Asterisk, Compass, Check, RotateCcw, List, Grid2X2, Plus, Minus, MoveDown, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ArrowLeft, Compass, Check, RotateCcw, List, Grid2X2, Plus, Minus, MoveDown, ShieldCheck } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Progress } from '@/components/ui/progress';
@@ -65,21 +65,21 @@ export default function Home() {
  return <main>
   <a className="skip" href="#values">Skip to the values explorer</a>
   <header className="site-header">
-   <a href="#" className="brand" aria-label="After AI home"><Asterisk aria-hidden="true"/><span>AFTER<span className="brand-ai">AI</span></span></a>
+   <a href="#" className="brand" aria-label="After AI home"><Compass aria-hidden="true"/><span>After<span className="brand-ai">AI</span></span></a>
    <nav aria-label="Main navigation"><a href="#futures">The futures</a><a href="#values">Your values</a><a href="#about">The thinking behind it <ArrowUpRight size={14}/></a></nav>
-   <span className="header-note"><i/> A FIELD GUIDE TO WHAT COMES NEXT</span>
+   <span className="header-note">AN ATLAS OF POSSIBLE FUTURES</span>
   </header>
 
   <section className="hero" aria-labelledby="hero-title">
    <div className="hero-art"><img src="/future-city.webp" width="1672" height="941" alt="A lone person faces two diverging bridges toward a vast cyan city beneath an amber sun." fetchPriority="high"/><div className="hero-art-shade"/></div>
    <div className="hero-copy">
-    <p className="eyebrow">+ MANY POSSIBLE WORLDS. ONE SHARED FUTURE.</p>
-    <h1 id="hero-title">The future<br/>isn’t written.<br/><span>Where do<br/>you stand?</span></h1>
+    <p className="eyebrow">MANY POSSIBLE WORLDS. ONE SHARED FUTURE.</p>
+    <h1 id="hero-title">The future is<br/>not yet written.<br/><span>Where do you stand?</span></h1>
     <p className="hero-intro">AI could change what it means to be human.<br/>Explore twelve possible futures. Find out what matters to you.</p>
     <div className="hero-actions"><a className="button orange" href="#values">Find your future <ArrowUpRight size={20}/></a><a className="text-link" href="#futures">Explore all 12 <ArrowRight size={17}/></a></div>
     <p className="hero-meta">5 QUESTIONS <span>·</span> ABOUT 2 MINUTES <span>·</span> NO RIGHT ANSWERS</p>
    </div>
-   <div className="art-caption"><span>THE NEXT CHAPTER IS STILL OPEN</span><span>IMAGINE / QUESTION / CHOOSE <Plus size={15}/></span></div>
+   <div className="art-caption"><span>PLATE I — THE WORLD AHEAD</span><span>IMAGINE · QUESTION · CHOOSE <Plus size={15}/></span></div>
   </section>
   <div className="bridge"><span>More intelligence is only part of the story.</span><span>Who has power? Who benefits? What do we preserve? <MoveDown size={19}/></span></div>
 
@@ -131,7 +131,7 @@ export default function Home() {
    <div className="thinking-intro"><p className="eyebrow">03 / KEEP THE QUESTION OPEN</p><h2 id="thinking-title">A compass,<br/><span>not a crystal ball.</span></h2><p>A future can be prosperous without being fair, safe without being free, or intelligent without being humane. The useful question is what we would want to protect—and who gets a say.</p><button className="underlined" onClick={()=>setMethod(true)}>Read the method and its limits <ArrowUpRight size={17}/></button></div>
    <div className="research-notes"><article><span className="source-number">[01]</span><div><h3>Abundance is a governance question.</h3><p>The OECD links AI benefits with inclusion, human agency, transparency, and accountability. More output alone does not answer who benefits.</p><a href="https://www.oecd.org/en/topics/ai-principles.html" {...external}>OECD AI Principles <ArrowUpRight size={14}/></a></div></article><article><span className="source-number">[02]</span><div><h3>Different people can want different futures.</h3><p>UNESCO’s ethics recommendation grounds AI governance in dignity, diversity, participation, and human responsibility. A five-question quiz cannot speak for that diversity.</p><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" {...external}>UNESCO Recommendation on AI Ethics <ArrowUpRight size={14}/></a></div></article><article><span className="source-number">[03]</span><div><h3>Digital minds raise a separate question.</h3><p>Long and colleagues argue for investigating possible AI welfare under uncertainty. This does not establish that AI is conscious, or imply that humanity should be replaced.</p><a href="https://arxiv.org/abs/2411.00986" {...external}>Taking AI Welfare Seriously, 2024 <ArrowUpRight size={14}/></a></div></article></div>
   </section>
-  <footer><a className="brand" href="#"><Asterisk aria-hidden="true"/><span>AFTER<span className="brand-ai">AI</span></span></a><div><p>An independent exploration inspired by <a href={sourceUrl} {...external}>Max Tegmark / Future of Life Institute</a>, <a href="https://thorehusfeldt.com/wp-content/uploads/2018/05/tegmark-001.png" {...external}>Thore Husfeldt’s chart</a>, and <a href="https://www.tomorrows-ai.org/" {...external}>Tomorrow’s AI</a>.</p><p>Not affiliated with or endorsed by these organizations. Original AI-generated illustration.</p></div><a className="back-to-top" href="#">BACK TO TOP <ArrowUpRight size={16}/></a></footer>
+  <footer><a className="brand" href="#"><Compass aria-hidden="true"/><span>After<span className="brand-ai">AI</span></span></a><div><p>An independent exploration inspired by <a href={sourceUrl} {...external}>Max Tegmark / Future of Life Institute</a>, <a href="https://thorehusfeldt.com/wp-content/uploads/2018/05/tegmark-001.png" {...external}>Thore Husfeldt’s chart</a>, and <a href="https://www.tomorrows-ai.org/" {...external}>Tomorrow’s AI</a>.</p><p>Not affiliated with or endorsed by these organizations. Original AI-generated illustration.</p></div><a className="back-to-top" href="#">BACK TO TOP <ArrowUpRight size={16}/></a></footer>
 
   <Dialog open={selected!==null} onOpenChange={open=>{if(!open)setSelected(null);}}>
    <DialogContent className="scenario-dialog">
