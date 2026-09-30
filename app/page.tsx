@@ -9,6 +9,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { scenarios, questions, dimensions, rankScenarios, validateAnswers, sourceUrl, type Answers, type Scenario } from './futures';
 import { PublicVote } from './public-vote';
+import { SurveyCompare } from './survey-compare';
 
 const emptyAnswers = (): (string | undefined)[] => Array(5).fill(undefined);
 const toValues = (answers: (string | undefined)[]): Answers => answers.map(v => v === undefined || v === 'unsure' ? null : Number(v)) as Answers;
@@ -85,7 +86,7 @@ export default function Home() {
   <div className="bridge"><span>More intelligence is only part of the story.</span><span>Who has power? Who benefits? What do we preserve? <MoveDown size={19}/></span></div>
 
   <section className="values-section" id="values" aria-labelledby="values-title">
-   <div className="values-heading"><p className="eyebrow">01 / YOUR VALUES, YOUR COMPASS</p><h2 id="values-title">A good future<br/>starts with<br/><em>what matters.</em></h2><p>Five questions about the choices beneath the technology.</p><p>Your answers connect you with futures to think through, including the parts you might reject.</p><div className="privacy-note"><ShieldCheck size={17}/><span>Your answers stay in this page.<br/>Reloading clears them.</span></div><button className="underlined" onClick={()=>setMethod(true)}>How the compass works <ArrowUpRight size={15}/></button></div>
+   <div className="values-heading"><p className="eyebrow">01 / YOUR VALUES, YOUR COMPASS</p><h2 id="values-title">A good future<br/>starts with<br/><em>what matters.</em></h2><p>Five questions about the choices beneath the technology.</p><p>Your answers connect you with futures to think through, including the parts you might reject.</p><div className="privacy-note"><ShieldCheck size={17}/><span>Your answers stay in this page<br/>unless you choose to share them.</span></div><button className="underlined" onClick={()=>setMethod(true)}>How the compass works <ArrowUpRight size={15}/></button></div>
    <div className="quiz-surface">
     {!finished ? <>
      <div className="quiz-top"><span className="eyebrow">{number(step+1)} / 05</span><span>{dimensions[step]}</span><Compass size={23}/></div>
@@ -103,6 +104,7 @@ export default function Home() {
      {top.map((r,i)=><article className="result-card" key={r.scenario.id}><div className="result-number">{number(i+1)}</div><div className="result-body"><div className="result-label">{i===0?'CLOSEST DISCUSSION MATCH':Math.abs(r.distance-top[0].distance)<1e-9?'TIED ON AFFINITY':'ALSO WORTH EXPLORING'} <span>· {r.compared.length}/5 dimensions compared</span></div><button className="result-title" onClick={()=>setSelected(r.scenario)}>{r.scenario.name}<ArrowUpRight size={22}/></button><p><strong>{r.agreements.length?'Connects on: ':'Nearest trade-off: '}</strong>{(r.agreements.length?r.agreements:r.compared).map(v=>dimensions[v.dimension].toLowerCase()).join(', ')}.</p><p className="result-tension"><strong>Question to keep: </strong>{r.scenario.question}</p>{r.differences.length>0&&<p className="mismatch">Different from your choices on {r.differences.map(v=>dimensions[v.dimension].toLowerCase()).join(', ')}.</p>}</div></article>)}
      {top.length>0&&<p className="result-caveat">Some scenarios leave values unspecified. Fewer compared dimensions means a thinner basis for reflection. Equal affinities are ordered by coverage, then name.</p>}
      <div className="result-actions"><button className="button ink" onClick={edit}>Revisit my answers <ArrowLeft size={16}/></button><button className="back-button" onClick={reset}><RotateCcw size={16}/> Start over</button><a className="underlined" href="#futures">{top.length?'See matches on the map':'Explore the atlas'} <ArrowRight size={16}/></a></div>
+     <SurveyCompare answers={values}/>
     </div>}
    </div>
   </section>
