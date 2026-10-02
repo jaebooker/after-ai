@@ -32,7 +32,7 @@ export default function Home() {
  const [stage,setStage] = useState<Stage>('quiz');
  const [selected,setSelected] = useState<Scenario|null>(null);
  const [panel,setPanel] = useState<Panel>(null);
- const [atlasView,setAtlasView] = useState('map');
+ const [atlasView,setAtlasView] = useState('list');
  const stageHeading=useRef<HTMLHeadingElement>(null);
  const dialogTop=useRef<HTMLSpanElement>(null);
  const focusRequested=useRef(false);
@@ -76,7 +76,7 @@ export default function Home() {
  function navigate(next:number){focusRequested.current=true;setStep(next);}
  function go(next:Stage){focusRequested.current=true;if(next==='quiz')setStep(0);setStage(next);}
  function choose(value:unknown){setAnswers(prev=>prev.map((v,i)=>i===step?String(value):v));}
- function openAtlas(){setAtlasView(window.matchMedia('(max-width: 760px)').matches?'list':'map');setSelected(null);setPanel('atlas');}
+ function openAtlas(){setAtlasView('list');setSelected(null);setPanel('atlas');}
  function openAbout(){setSelected(null);setPanel('about');}
  function closePanel(){setPanel(null);setSelected(null);}
  const index=selected?scenarios.indexOf(selected):-1;
@@ -139,7 +139,7 @@ export default function Home() {
   </section>
 
   <section className="explore" aria-label="Go deeper">
-   <button className="explore-card" onClick={openAtlas}><MapIcon aria-hidden="true"/><span><strong>The map of twelve futures</strong><small>See every scenario and where yours sit among them.</small></span><ArrowUpRight size={22}/></button>
+   <button className="explore-card" onClick={openAtlas}><MapIcon aria-hidden="true"/><span><strong>The twelve futures</strong><small>Read every scenario, or see them on the map.</small></span><ArrowUpRight size={22}/></button>
    <button className="explore-card" onClick={openAbout}><BookOpen aria-hidden="true"/><span><strong>How it works, and its limits</strong><small>The method, what is stored, and the thinking behind it.</small></span><ArrowUpRight size={22}/></button>
   </section>
   <footer><a className="brand" href="#"><Compass aria-hidden="true"/><span>After<span className="brand-ai">AI</span></span></a><div><p>An independent exploration inspired by <a href={sourceUrl} {...external}>Max Tegmark / Future of Life Institute</a>, <a href="https://thorehusfeldt.com/wp-content/uploads/2018/05/tegmark-001.png" {...external}>Thore Husfeldt’s chart</a>, and <a href="https://www.tomorrows-ai.org/" {...external}>Tomorrow’s AI</a>. Not affiliated with or endorsed by them.</p></div><a className="back-to-top" href="#">BACK TO TOP <ArrowUpRight size={16}/></a></footer>
@@ -161,7 +161,7 @@ export default function Home() {
      <DialogTitle className="dialog-heading">Twelve futures.</DialogTitle>
      <DialogDescription className="atlas-lede">The worlds in Max Tegmark’s <em>Life 3.0</em>. Select one to read its central idea and a question worth asking.</DialogDescription>
      <Tabs value={atlasView} onValueChange={v=>setAtlasView(String(v))} className="atlas-tabs">
-      <div className="atlas-toolbar"><TabsList aria-label="Atlas view" className="view-tabs"><TabsTrigger value="map"><Grid2X2 size={16}/> Map</TabsTrigger><TabsTrigger value="list"><List size={17}/> List</TabsTrigger></TabsList><div className="legend"><span><i/> Scenarios</span><span className="warning"><i/> Warnings</span>{top.length>0&&<span className="match"><i/> Your matches</span>}</div></div>
+      <div className="atlas-toolbar"><TabsList aria-label="Atlas view" className="view-tabs"><TabsTrigger value="list"><List size={17}/> List</TabsTrigger><TabsTrigger value="map"><Grid2X2 size={16}/> Map</TabsTrigger></TabsList><div className="legend"><span><i/> Scenarios</span><span className="warning"><i/> Warnings</span>{top.length>0&&<span className="match"><i/> Your matches</span>}</div></div>
       <TabsContent value="map">
        <div className="map-scroll" role="region" aria-label="Map of AI futures. Scroll sideways on smaller screens, or use the list." tabIndex={0}>
         <div className="map-canvas">
