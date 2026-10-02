@@ -17,13 +17,13 @@ assert.equal(first.data.mine, null);
 const cookieA = first.response.headers.get('set-cookie').split(';')[0];
 const cookieB = (await call()).response.headers.get('set-cookie').split(';')[0];
 const initial = first.data.total;
-const a = [1, 1, 0, -1, -1], b = [1, -1, null, -1, 0];
+const a = [1, 1, 0, -1, -1, 1], b = [1, -1, null, -1, 0, 0];
 try {
   assert.equal((await call('POST', undefined, a)).response.status, 400);
   assert.equal((await call('POST', cookieA, a, 'https://example.com')).response.status, 403);
-  assert.equal((await call('POST', cookieA, [1, 2, 0, 0, 0])).response.status, 400);
+  assert.equal((await call('POST', cookieA, [1, 2, 0, 0, 0, 0])).response.status, 400);
   assert.equal((await call('POST', cookieA, [1, 0])).response.status, 400);
-  assert.equal((await call('POST', cookieA, [null, null, null, null, null])).response.status, 400);
+  assert.equal((await call('POST', cookieA, [null, null, null, null, null, null])).response.status, 400);
   const saved = await call('POST', cookieA, a);
   assert.equal(saved.data.total, initial + 1);
   assert.deepEqual(saved.data.mine.answers, a);
@@ -34,6 +34,9 @@ try {
   assert.equal(other.data.total, initial + 2);
   const q1 = other.data.questions[0];
   assert.ok(q1['1'] >= 2);
+  assert.equal(other.data.questions.length, 6);
+  assert.ok(other.data.questions[5]['1'] >= 1 && other.data.questions[5]['0'] >= 1);
+  assert.equal((await call('POST', cookieA, [1, 1, 0, -1, -1])).response.status, 400);
   const changed = await call('POST', cookieA, b);
   assert.equal(changed.data.total, initial + 2);
   assert.deepEqual((await call('GET', cookieA)).data.mine.answers, b);
