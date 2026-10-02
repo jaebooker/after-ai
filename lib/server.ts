@@ -29,6 +29,10 @@ export function db() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
     );
+    -- q6 (oversight) was added later. v = 1 marks responses saved before it existed,
+    -- so their empty q6 is not counted as "unsure".
+    ALTER TABLE survey_responses ADD COLUMN IF NOT EXISTS q6 SMALLINT CHECK (q6 IN (-1, 0, 1));
+    ALTER TABLE survey_responses ADD COLUMN IF NOT EXISTS v SMALLINT NOT NULL DEFAULT 1;
   `).then(() => undefined).catch(error => { globalForDb.afterAiSchema = undefined; throw error; });
   const pool = globalForDb.afterAiPool;
   return { query: async <T extends object>(text: string, values: unknown[] = []) => { await globalForDb.afterAiSchema; return (await pool.query<T>(text, values)).rows; } };

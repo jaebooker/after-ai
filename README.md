@@ -1,6 +1,6 @@
 # After AI
 
-An interactive field guide to twelve possible AI futures, with a five-question values compass, a scenario atlas, and source notes.
+An interactive field guide to twelve possible AI futures, built as one guided flow: a six-question values compass, your three closest futures, then a vote for the future you would choose. The scenario atlas and the method notes open on request.
 
 Hosted on Vercel (project `after-ai`), with anonymous survey and vote data in Neon Postgres.
 
@@ -31,13 +31,17 @@ The site uses Next.js, React, TypeScript, Tailwind CSS, and Base UI components. 
 
 Values matching is an editorial reflection tool, not a forecast or a validated psychological assessment. Answers remain in page memory unless the visitor chooses to share them.
 
+## Compass questions
+
+Six values: agency, distribution, pluralism, development ambition, continuity, and oversight (who checks the ones in charge). Oversight was added after launch. Responses saved before it are marked `v = 1` in `survey_responses` and are left out of the question-six totals, so their missing answer is not counted as "unsure". The columns are added automatically on first request.
+
 ## Survey sharing
 
-After finishing the compass, visitors can share their five answers. The server stores the answers (-1, 0, 1, or null for unsure) and the closest match computed from them, keyed by the same hashed browser identifier as the ballot. Each browser has one response; sharing again replaces it, and visitors can remove it. Once shared, the visitor sees for each question how all responses split and what percentage answered as they did, plus the distribution of closest matches. The same deduplication limits described below apply.
+After finishing the compass, visitors can share their six answers. The server stores the answers (-1, 0, 1, or null for unsure) and the closest match computed from them, keyed by the same hashed browser identifier as the ballot. Each browser has one response; sharing again replaces it, and visitors can remove it. Once shared, the visitor sees for each question how all responses split and what percentage answered as they did, plus the distribution of closest matches. The same deduplication limits described below apply.
 
 ## Public voting
 
-The separate optional ballot stores only a SHA-256 hash of a random browser identifier and the selected scenario in Postgres. An HttpOnly, SameSite cookie remembers the browser for up to one year (Secure on HTTPS). No names, emails, or IP addresses are stored; quiz answers are stored only if the visitor shares them. Hosting infrastructure may maintain its own request logs.
+The ballot is the last step of the flow, after the results. It stores only a SHA-256 hash of a random browser identifier and the selected scenario in Postgres. An HttpOnly, SameSite cookie remembers the browser for up to one year (Secure on HTTPS). No names, emails, or IP addresses are stored; quiz answers are stored only if the visitor shares them. Hosting infrastructure may maintain its own request logs.
 
 One database row per identifier and an atomic upsert prevent repeated or concurrent submissions from inflating totals. Visitors can change or remove their vote. This is best-effort browser deduplication, not verified unique people: clearing cookies, private browsing, other devices, and deliberate automated submissions can bypass it. Results are labelled as voluntary visitor votes, not representative public opinion. No historical FLI data is mixed in.
 
